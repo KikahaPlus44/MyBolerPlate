@@ -28,6 +28,15 @@ module.exports = function (grunt) {
     // Project settings
     config: config,
 
+    // sprite
+    sprite:{
+      all: {
+        src: 'app/images/icons/*.png',
+        dest: 'app/images/sprites.png',
+        destCss: 'app/css/sprites.css'
+      }
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -48,6 +57,7 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
+      
       sass: {
         files: ['<%= config.app %>/css/{,*/}*.{scss,sass}'],
         tasks: ['sass:server', 'autoprefixer']
@@ -68,6 +78,7 @@ module.exports = function (grunt) {
       }
     },
 
+    
     // The actual grunt server settings
     connect: {
       options: {
@@ -422,4 +433,5 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+  grunt.loadNpmTasks('grunt-spritesmith');
 };
